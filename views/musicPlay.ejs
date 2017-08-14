@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/main.css' />
+    <link rel="stylesheet" href="/stylesheets/musicPlayer.css">
+    <!--<script type="text/javascript" src="javascripts/js/tagCloud.js"></script>-->
+</head>
+<body>
+<%include includes/header.ejs%>
+<div class="wrapper">
+    <div class="show">
+        <div class="songlist">
+            <p>歌曲列表</p>
+            <input type="hidden" class="albumId" value="<%= id%>" >
+            <div class="tableWrapper">
+                <table>
+                    <tr><th>歌手</th><th>歌曲名字</th><th>时长</th></tr>
+                    <% musics.forEach(function(music){%>
+                    <tr><td class="aName" title="<%= music.artistName %>"><%= music.artistName %></td><td class="sName" title="<%= music.songName %>"><%= music.songName %></td><td class="ope"><span><%= music.songTime%></span><span class="playContro stop"></span></td></tr>
+                    <%})%>
+                </table>
+            </div>
+
+
+
+        </div>
+        <div class="lyrics" id="box">
+            <p>歌词显示</p>
+            <div class="lyric">
+                    <ul>
+                    </ul>
+                    <div class="lyrPic">
+                        <img src="images/star/star1.jpg">
+                    </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="player">
+        <p>播放器</p>
+        <div class="musicPlayer">
+            <div class="controllers">
+                <div class="songName">歌曲名</div>
+                <div class="artistName">歌手名</div>
+                <div class="playControllers1">
+                    <span title="播放时间" class="time">00:00/00:00</span>
+                    <span title="这首歌感觉怎样" class="ctr feel"></span>
+                    <span title="歌词" class="ctr words"></span>
+                    <span title="更多操作" class="ctr more"></span>
+                    <span title="下载" class="ctr download"></span>
+                </div>
+                <!--时间轴-->
+                <div class="timerShaft">
+                    <div class="timerShaftMove"></div>
+                </div>
+                <div class="playControllers2">
+                    <span class="ctr2 volume"></span><span title="音量" class="volumeRange hide"><input type="range"></span>
+                    <div class="playCtr">
+                        <span class="hide moreHide">
+                            <span title="循环播放" class="ctr2 loop"></span>
+                            <span title="单曲循环" class="ctr2 single"></span>
+                            <span title="随机播放" class="ctr2 random"></span>
+                        </span>
+
+                        <span title="上一首" class="ctr2 previous"></span>
+                        <span title="播放/暂停" class="ctr2 playStop"></span>
+                        <span title="下一首" class="ctr2 next"></span>
+                    </div>
+
+                </div>
+            </div>
+            <div class="playerPic">
+                <div class="starPic">
+                    <img src="images/star/star2.jpg">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="visualMusic">
+        <p>看见音乐</p>
+        <div class="visual"></div>
+    </div>
+    <div class="smellMusic">
+        <p>闻见音乐</p>
+        <div class="smell">
+            <form>
+                <input type="text" class="smellInput">
+                <span class="smellTips">填写味道后评论</span>
+                <% if (user) { %>
+                <input type="button" class="smellSubmit" value="添加味道">
+                <% } else { %>
+                <a href="/signin" class="smellComment">登录后评论</a>
+                <% } %>
+            </form>
+            <div class="allSmell">
+                <% smells.forEach(function(smell){%>
+                    <span><%= smell.smell%></span>
+                <%})%>
+                <!--<span>柠檬味道</span>-->
+                <!--<span>青草味道</span>-->
+                <!--<span>大海味道</span>-->
+            </div>
+        </div>
+    </div>
+</div>
+<div class="storyWrapper">
+    <p>音乐故事</p>
+    <div class="story">
+        <div class="userStory storyForm ">
+            <div class="userPic">
+                <img src="images/user/userDefault.jpg">
+            </div>
+            <div class="storyContent">
+                <form class="storyForm" >
+                    <% if(user) { %>
+                        <input type="hidden"  class="from" value="<%= user._id%>"  >
+                    <% } %>
+                    <textarea  class="content" placeholder="说说你的音乐故事"></textarea>
+                    <span class="commentTips">请输入评论内容后提交</span>
+                    <% if (user) { %>
+                        <input class="storySubmit" type="button" value="提交">
+                    <% } else { %>
+                        <a href="/signin" class="commentAfterLogin">登录后评论</a>
+                    <% } %>
+                </form>
+
+            </div>
+        </div>
+        <!--用户评论部分-->
+        <% musicStories.forEach(function(musicStory){%>
+            <div class="userStory">
+                <div class="userPic">
+                <img src="images/user/user2.jpg">
+                </div>
+                <div class="storyContent">
+                <%= musicStory.from.name%>:<%= musicStory.content%>
+                </div>
+            </div>
+        <%})%>
+        <p class="storyMore"><a>查看更多故事</a></p>
+    </div>
+</div>
+<%include includes/footer.ejs%>
+<script type="text/javascript" src="javascripts/lib/jquery-2.1.1.js"></script>
+<script type="text/javascript" src="javascripts/js/MusicVisualizer.js"></script>
+<script type="text/javascript" src="javascripts/js/tagCloud.js"></script>
+<script type="text/javascript" src="javascripts/js/musicPlayer.js"></script>
+<script type="text/javascript" src="javascripts/js/musicStory.js"></script>
+
+
+</body>
+</html>

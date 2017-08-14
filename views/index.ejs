@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel='stylesheet' href='/stylesheets/main.css' />
+
+</head>
+<body>
+    <%include includes/header.ejs%>
+    <div class="nav2"></div>
+    <div class="ads_back">
+        <div class="adsframe">
+            <!--<div >-->
+                <ul class="photo">
+                    <li><img src="images/ads/Jason_marz.jpg"></li>
+                    <li><img src="images/ads/Joe_Brooks.jpg"></li>
+                    <li><img src="images/ads/the_ting_tings.jpg"></li>
+                    <li><img src="images/ads/Joshua_Radin.jpg"></li>
+                </ul>
+            <!--</div>-->
+        </div>
+        <div class="ads">
+            <img src="images/ads/music.jpg">
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="music_content">
+            <div class="music_title">推荐音乐</div>
+            <div class="albums">
+                <ul>
+
+                    <% musics.forEach(function(music){%>
+                    <li title="<%= music.musicName %>"><a href="/musicPlay?id=<%= music.id%>"><div class="album"><img src="images/album/<%= music.musicPicAddr%>"></div><p class="album_title"><%= music.musicDescribe %></p></a></li>
+                    <%})%>
+
+                </ul>
+            </div>
+        </div>
+        <div class="music_story">
+            <ul>
+                <!--<li><div class="userPic"><img src="images/user/user1.jpg"></div><p class="story_title">我的故事很长很长很长</p></li>-->
+                <!--<li><div class="userPic"><img src="images/user/user2.jpg"></div><p class="story_title">我的故事</p></li>-->
+                <!--<li><div class="userPic"><img src="images/user/user4.jpg"></div><p class="story_title">我的故事</p></li>-->
+                <% musicStories.forEach(function(story){%>
+                    <li><div class="userPic"><img src="images/user/user1.jpg"></div><p class="story_title"><%= story.content%></p></li>
+                <% }) %>
+            </ul>
+            <!--<button>查看更多</button>-->
+            <p>更多故事请在专辑中查看</p>
+        </div>
+    </div>
+    <%include includes/footer.ejs%>
+
+    <script src="javascripts/lib/jquery-2.1.1.js"></script>
+    <script src="javascripts/js/main.js"></script>
+</body>
+</html>

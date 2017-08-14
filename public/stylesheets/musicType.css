@@ -1,0 +1,123 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+
+}
+
+.banner{
+    width: 100%;
+    height: 450px;
+    position: relative;
+    overflow: hidden;
+    /*overflow-y: hidden;*/
+}
+.bannerContent{
+    position: absolute;
+    width: 400px;
+    height: 150px;
+    color: white;
+    font-size: 22px;
+    /*border: 3px solid white;*/
+    background: rgba(255,255,255,.3);
+    top:150px;
+    left: calc((100vw - 400px) /2);
+    text-align: center;
+    padding-top: 65px;
+}
+.banner image{
+    width: 100%;
+    /*overflow: hidden;*/
+    /*width: 1280px;*/
+    height: 450px;
+
+    /*border: 2px solid red;*/
+}
+
+/*.static_back{*/
+    /*/!*position: fixed;*!/*/
+    /*width: 100%;*/
+    /*height: 500px;*/
+    /*/!*padding-bottom: 200px;*!/*/
+    /*top: 600px;*/
+    /*background: url("/images/background/background1.png");*/
+/*}*/
+/* */
+
+.musicType{
+    width: 100%;
+    height: 400px;
+    /*background-color: #71D16A;*/
+
+
+    position: relative;
+}
+.type1{
+    /*background: url('/images/musicType/background0.jpg');*/
+    background-size: cover;
+}
+.type2{
+     /*background: url('/images/musicType/background1.png');*/
+     background-size: cover;
+}
+.type3{
+    /*background: url('/images/musicType/background2.png');*/
+    background-size: cover;
+}
+.type4{
+    /*background: url('/images/musicType/background3.png');*/
+    background-size: cover;
+}
+.musicPic{
+    width: 300px;
+    height: 300px;
+    /*background-color: #00B7FF;*/
+}
+
+.jazz{
+    width: 250px;
+    height: 350px;
+    margin-top:-50px;
+    /*border-radius: 50%;*/
+}
+.describe{
+
+    width: 800px;
+    height: 400px;
+    /*background-color: #5588aa;*/
+    position: absolute;
+
+    padding: 80px 50px;
+}
+.desRight{
+    right: 50px;
+}
+.desLeft{
+    left: 50px;
+}
+.picLeft{
+    position: absolute;
+    left: 150px;
+    top:75px;
+}
+.picRight{
+    position: absolute;
+    right: 100px;
+    top:75px;
+}
+.describe p{
+    text-indent: 2em;
+    margin-bottom: 10px;
+}
+
+.rock{
+    width: 250px;
+    height: 350px;
+    margin-top: -50px;
+    /*border-radius: 50%;*/
+}
+.country{
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+}

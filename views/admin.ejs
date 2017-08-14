@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel='stylesheet' href='/stylesheets/main.css' />
+    <link rel="stylesheet" href="/stylesheets/admin.css" />
+</head>
+<body>
+<header>
+    <div class="logo">
+        <a href="/">
+            Music Player
+        </a>
+    </div>
+    <nav>
+        <a href="/artists">音乐人</a>
+        <a href="/musicType">音乐类别</a>
+        <a href="#">请等待</a>
+    </nav>
+    <div class="search">
+        <input class="searchInput" type="text">
+    </div>
+    <div class="login">
+        <a href="#">登录</a>
+    </div>
+</header>
+<div class="adminWrapper">
+    <div class="albumDiv wrapper">
+        <p>歌曲专辑编辑</p>
+        <form method="post" action="/admin/music" class="adminForm"  enctype="multipart/form-data" >
+
+            <p>
+                <label for="musicName">专辑名称</label>
+                <input type="text" id="musicName" name="music[musicName]" >
+                <!--<input type="text" id="musicName" name="musicName">-->
+
+            </p>
+            <p>
+                <label for="musicPicAddr">专辑海报地址</label>
+                <input type="text" id="musicPicAddr" name="music[musicPicAddr]"  >
+                <!--<input type="text" id="musicPicAddr" name="musicPicAddr">-->
+
+            </p>
+            <p>
+                <label for="musicDescribe">专辑介绍</label>
+                <input type="text" id="musicDescribe" name="music[musicDescribe]" >
+                <!--<input type="text" id="musicDescribe" name="musicDescribe">-->
+
+            </p>
+            <p><input type="submit" value="保存"> </p>
+        </form>
+    </div>
+    <div class="starDiv wrapper">
+        <p>音乐人编辑</p>
+        <form method="post" action="/admin/artists" class="adminForm" enctype="multipart/form-data" >
+
+            <p>
+                <label for="artistName">歌手名字</label>
+                <input type="text" id="artistName" name="artist[artistName]" >
+                <!--<input type="text" id="musicName" name="musicName">-->
+
+            </p>
+            <p>
+                <label for="artistLove">喜爱数</label>
+                <input type="text" id="artistLove" name="artist[artistLove]"  >
+                <!--<input type="text" id="musicPicAddr" name="musicPicAddr">-->
+
+            </p>
+            <p>
+                <label for="artistCountry">歌手国家</label>
+                <input type="text" id="artistCountry" name="artist[artistCountry]" >
+                <!--<input type="text" id="musicDescribe" name="musicDescribe">-->
+
+            </p>
+            <p><input type="submit" value="保存"> </p>
+        </form>
+    </div>
+
+
+
+</div>
+
+
+
+
+
+<footer>
+    music & life & story
+</footer>
+<script src="javascripts/lib/jquery-2.1.1.js"></script>
+<script src="javascripts/js/main.js"></script>
+</body>
+</html>

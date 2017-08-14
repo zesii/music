@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel='stylesheet' href='/stylesheets/signin.css' />
+    <title>登录页面</title>
+</head>
+<body>
+    <div class="main"></div>
+    <div class="login">
+        <p class="login_title">登&nbsp;&nbsp;&nbsp;录</p>
+        <form action="/user/signin" method="post"  enctype="multipart/form-data">
+            <p class="loginform username"><input type="text" name="user[name]" placeholder="用户名"></p>
+            <p class="loginform userpsw"><input type="password" name="user[password]" placeholder="密码"><%if(passwordErr){%><span class="pswErr">密码不正确</span><%}%></p>
+            <p class="loginform"><input type="submit" value="登&nbsp;录"></p>
+            <p class="signup">没有用户？<a href="/signup">点击注册</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="/">返回首页</a></p>
+            <!--<p class="turnMain"><a href="/">返回首页</a></p>-->
+        </form>
+    </div>
+
+
+
+    <!--<script type="text/javascript" src="javascripts/lib/jquery-2.1.1.js"></script>-->
+</body>
+</html>

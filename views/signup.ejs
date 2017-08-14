@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel='stylesheet' href='/stylesheets/signup.css' />
+    <title>注册页面</title>
+</head>
+<body>
+<div class="main"></div>
+<div class="login">
+    <p class="login_title">注&nbsp;&nbsp;&nbsp;册</p>
+    <form action="/user/signup" method="post" enctype="multipart/form-data" onsubmit="return checkState()">
+        <p class="loginform username"><input class="userName" type="text" name="user[name]" placeholder="用户名"><span class="tips userNameOK">可以使用该用户名</span><span class="tips userNameErr">该名字已被注册</span><span class="tips userNameTip"></span></p>
+        <p class="loginform userpsw"><input class="userPassword" type="password" name="user[password]"  placeholder="密码"><span class="tips passwordTips"></span><span class="tips passwordTipsOK"></span></p>
+        <p class="loginform userrePassword"><input class="userRepassword" type="password" name="repsw"  placeholder="再次输入"><span class="tips rePasswordTips"></span><span class="tips rePasswordTipsOK"></span></p>
+        <!--<p class="loginform userPortrait"><span class="upload">上传头像</span><input type="file" name="user[userPic]" class="fileToLoad" /></p>-->
+        <p class="loginform"><input type="submit"  class="formSubmit" value="注&nbsp;册"></p>
+        <!--<p class="signup">没有用户？<a href="#">点击注册</a></p>-->
+        <p class="turnMain"><a href="/">返回首页</a></p>
+    </form>
+    <!--<div class="PortraitShow">-->
+        <!--<img class="userimg" src="/images/user/default.jpg">-->
+        <!--<p class="submitPortrait">上传</p>-->
+    <!--</div>-->
+
+</div>
+<script src="javascripts/lib/jquery-2.1.1.js"></script>
+<script type="text/javascript" src="javascripts/js/signup.js"></script>
+
+</body>
+</html>

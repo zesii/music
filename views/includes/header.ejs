@@ -1,0 +1,22 @@
+<header>
+    <div class="logo">
+        <a href="/">
+            Music Player
+        </a>
+    </div>
+    <nav>
+        <a href="/artists">音乐人</a>
+        <a href="/musicType">音乐类别</a>
+        <a href="#">请等待</a>
+    </nav>
+    <div class="search">
+        <input class="searchInput" type="text">
+    </div>
+    <div class="login">
+        <% if (user) { %>
+        <span class="userName">欢迎您,<%= user.name%></span>&nbsp;|&nbsp;<a href="/logout">登出</a>
+        <%} else {%>
+        <a href="/signin">登录</a>
+        <% } %>
+    </div>
+</header>

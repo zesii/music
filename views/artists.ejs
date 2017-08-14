@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/common.css' />
+    <link rel="stylesheet" href="/stylesheets/artists.css">
+</head>
+<body>
+<%include includes/header.ejs%>
+<div class="container">
+    <div class="bannerPanel">
+        <div>MUSIC</div>
+    </div>
+    <div class="main">
+        <div class="split">你喜欢的歌手<br/><span>你喜欢的音乐</span></div>
+        <ul class="artists">
+            <% artists.forEach(function(artist){%>
+                <li class="artist"><input type="hidden" class="artistId" value="<%= artist._id%>"><img src="/images/star/<%= artist.artistName%>.jpg"><div class="information"><div class="describe"><%= artist.artistName%></div><p><a class="loveSubmit" href="javascript:void(0)"><span class="noLove"></span></a><span class="loveNum"><%= artist.artistLove%></span></p></div></li>
+            <%})%>
+
+        </ul>
+    </div>
+    <div class="more"></div>
+</div>
+
+<%include includes/footer.ejs%>
+<script src="javascripts/lib/jquery-2.1.1.js"></script>
+<script src="javascripts/js/artists.js"></script>
+</body>
+</html>

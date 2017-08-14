@@ -1,0 +1,165 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+body{
+    position: relative;
+}
+html,body{
+    height: 100%;
+}
+.main{
+    width: 100%;
+    height: 100%;
+    background-image: url('/images/background/signup.jpg');
+    filter:blur(1px);
+    background-size:cover;
+}
+.login{
+    position: absolute;
+    width: 400px;
+    height: 500px;
+    /* background-color: #00B7FF; */
+    top: calc((100vh - 550px)/2);
+    left: calc((100vw - 400px ) / 2);
+}
+.login_title{
+    font-size: 26px;
+    text-align: center;
+    color: white;
+    margin-bottom: 30px;
+
+}
+.loginform{
+    text-align: center;
+    margin-bottom: 20px;
+}
+.loginform input{
+    width: 250px;
+    height: 35px;
+    /* font-size: 20px; */
+    border: none;
+    outline: none;
+    border-radius: .3em;
+    color: white;
+    padding-left: 10px;
+    background: rgba(255,255,255,.5);
+    box-shadow: 0px 0px 0px 2px white;
+
+}
+.formSubmit{
+    background-color: white;
+    color:yellowgreen;
+}
+.formSubmit:disabled{
+    background-color: gray;
+}
+.signup{
+    color: white;
+    font-size: 14px;
+    text-align: center;
+    margin-top: 40px;;
+}
+.signup a{
+    text-decoration: none;
+    color: whitesmoke;
+}
+
+.tips{
+    font-size: 14px;
+    position: absolute;
+    width: 150px;
+    height: 21px;
+    border-radius: .3em;
+    color: white;
+    top: 70px;
+    left: 330px;
+    border: 1px solid white;
+    display: none;
+}
+.userNameErr{
+    background-color: rgba(157,63,63,0.8);
+}
+.userNameOK{
+    background-color: rgba(112,179,136,0.8);
+}
+.userNameTip{
+    background-color: rgba(237,180,70,0.8);
+}
+.passwordTips{
+    top: 125px;
+    background-color: rgba(237,180,70,0.8);
+}
+.passwordTipsOK{
+    top: 125px;
+    background-color: rgba(112,179,136,0.8);
+}
+.rePasswordTips{
+    top:170px;
+    background-color: rgba(237,180,70,0.8);
+}
+.rePasswordTipsOK{
+    top:170px;
+    background-color: rgba(112,179,136,0.8);
+}
+.userPortrait input{
+    opacity: 0;
+    width: 100%;
+    height:100%;
+    background-color: #00B7FF;
+}
+.userPortrait{
+    position: relative;
+}
+.upload {
+    position: absolute;
+    left: 75px;
+    right: 0px;
+    display: inline-block;
+
+    width: 250px;
+    height: 35px;
+    /* font-size: 20px; */
+    border: none;
+
+    border-radius: .3em;
+    color: gray;
+    font-size: 14px;
+    padding-left: 10px;
+    background: rgba(255, 255, 255, .5);
+    box-shadow: 0px 0px 0px 2px white;
+    line-height: 35px;
+    text-align: left;
+}
+.PortraitShow{
+    width: 200px;
+    height: 100px;
+    border-radius: .3em;
+    /* background: rgba(255,255,255,.5); */
+    margin-left: 150px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    /* border: 2px solid white; */;
+    /*background: url('/images/user/default.jpg');*/
+}
+.PortraitShow img{
+    width: 100px;
+    height: 100px;
+    border: 2px solid white;
+    border-radius: .3em;
+}
+.PortraitShow p{
+    font-size: 14px;
+    color: white;
+}
+.turnMain{
+    /* border: 1px solid red; */
+    text-align: center;
+
+    font-size: 16px;
+}
+.turnMain a{
+    text-decoration: none;
+    color: white;
+}

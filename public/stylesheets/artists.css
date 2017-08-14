@@ -1,0 +1,114 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+.container{
+    width: 100%;
+    height: auto;
+    /*border: 1px solid red;*/
+    background-color: #F5F4F4;
+}
+.main{
+    margin-bottom: 50px;
+}
+.bannerPanel{
+    width: 100%;
+    height: 400px;
+    /*border: 1px solid green;*/
+    /*background: url('/images/background/background.jpg');*/
+    background: url('/images/background/background_4.jpg');
+    background-size: cover;
+    position: relative;
+}
+.bannerPanel div{
+    /*position: absolute;*/
+    /*right: 50px;*/
+    /*width: 300px;*/
+    /*height: 400px;*/
+    position: absolute;
+    height: 150px;
+    width: 100%;
+    top: 125px;
+    background-color: rgba(255,255,255,.5);
+    text-align: center;
+    color: gray;
+    font-size: 40px;
+    line-height: 150px;
+
+}
+.split{
+    padding-top: 40px;
+    width: 100%;
+    height: 100px;
+    text-align: center;
+    font-size: 20px;
+    color: black;
+    /*line-height: 100px;*/
+}
+.split span{
+    font-size: 16px;
+    color: silver;
+}
+.artist{
+    width: 280px;
+    height: 320px;
+    /*border: 2px solid slategray;*/
+    margin-left: 28px;
+    margin-top: 28px;
+    list-style: none;
+    display: inline-block;
+}
+.artist:hover{
+    box-shadow: 1px 1px 4px gray,-1px 1px 4px gray;
+}
+.artist img{
+    width: 280px;
+    height: 200px;
+    /*background-color: #00B7FF;*/
+}
+.information{
+    width: 280px;
+    height: 120px;
+    /*background-color: #71D16A;*/
+    margin-top: -5px;
+    background-color: white;
+}
+.describe{
+    /*background-color: hotpink;*/
+    width: 100%;
+    height: 80px;
+    padding: 20px;
+    overflow: hidden;
+    text-align: center;
+}
+.information p{
+    width: 100%;
+    height: 30px;
+    /*background-color: #494A5F;*/
+}
+.noLove{
+    width: 20px;
+    height: 20px;
+    vertical-align: sub;
+    display: inline-block;
+    /* background-color: #71D16A; */
+    margin-left: 200px;
+    background-image: url('/images/icon/noLove.jpg');
+}
+.love{
+    width: 20px;
+    height: 20px;
+    vertical-align: sub;
+    display: inline-block;
+    /* background-color: #71D16A; */
+    margin-left: 200px;
+    background-image: url('/images/icon/love.jpg');
+}
+.loveNum{
+    margin-left: 5px;
+    height: 30px;
+    margin-top: -10px;
+    display: inline-block;
+
+}

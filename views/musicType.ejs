@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/common.css' />
+    <link rel="stylesheet" href="/stylesheets/musicType.css">
+</head>
+<body>
+<%include includes/header.ejs%>
+<div class="container">
+    <div class="banner">
+        <div class="bannerContent">你应该了解更多音乐...</div>
+        <img src="images/musicType/banner.jpg">
+    </div>
+    <div class="static_back">
+        <div class="content">
+            <div class="musicType type1">
+                <div class="musicPic picLeft">
+                    <img class="jazz" src="images/musicType/jazz.png">
+                </div>
+                <div class="describe desRight desJazz">
+                    <p>爵士乐（Jazz），于19世纪末20世纪初源于美国，诞生于南部港口城市新奥尔良，音乐根基来自布鲁斯（Blues）和拉格泰姆（Ragtime）。爵士乐讲究即兴，以具有摇摆特点的Shuffle节奏为基础，是非洲黑人文化和欧洲白人文化的结合。</p>
+                    <!--<p>爵士乐的主要风格有：新奥尔良爵士、摇摆乐、比博普、冷爵士、自由爵士、拉丁爵士、融合爵士等。</p>-->
+                    <p>爵士乐相较于其它音乐，其自身有很多独特之处：即兴演奏或者是演唱,运用布鲁斯音阶,爵士乐节奏的极其复杂性,独有的爵士和弦,独特的音色运用</p>
+                    <p>爵士歌手：Frank Sinatra，Ella Fitzgerald，Louis Armstrong，Chet Baker，Nat King Cole,The Ink Spots...</p>
+                </div>
+            </div>
+
+
+            <div class="musicType type2">
+                <div class="musicPic picRight">
+                    <img class="rock" src="/images/musicType/rock.png">
+                </div>
+                <div class="describe desLeft desRock">
+                    <p>从20世纪50年代起，人们在广播和唱片中认识了一种新的流行音乐，这种音乐每一拍节奏都非常强烈，歌词写的也十分新鲜，一下子征服了许多美国人的心。1951年，美国克利夫兰电台首次播放这类音乐时，为了使听众感到新鲜，一位名叫艾伦·弗里德的播音员在播放前介绍时，给这种音乐命名为“摇滚乐”。</p>
+                    <!--<p>1955年，一位名叫Bill Haley的歌星演唱并录制了一张名叫《整日摇滚》（Rock Around the Clock）的唱片，引起了极大的轰动，前后出售了1500多万张，成为世界上最畅销的唱片之一，摇滚音乐的名称便由此而来。</p>-->
+                    <p>关于“摇滚精神”和 “摇滚思想”：多数摇滚乐爱好者喜欢将摇滚描述为一种精神，然而关于这种精神究竟是什么却众说纷纭。较有代表性和影响力的摇滚精神大概有:青年自主意识,爱与和平,反宗教,享乐主义或者纵欲主义,悲观主义与虚无主义。</p>
+                    <p>著名摇滚乐队:The Beatles,Rolling Stones,Queen,U2,R.E.M,Nirvana,Guns N’ Roses,Metallica,Bon Jovi,Suede</p>
+                </div>
+            </div>
+            <div class="musicType type3">
+                <div class="musicPic picLeft">
+                    <img class="country" src="/images/musicType/country.jpg">
+                </div>
+                <div class="describe desRight">
+                    <p>乡村音乐（country music）是一种具有美国民族特色的流行音乐，于20世纪20年代兴起于美国南部，其根源来自英国民谣，是美国白人民族音乐代表。乡村音乐的特点是曲调简单，节奏平稳，带有叙事性，具有较浓的乡土气息，亲切热情而不失流行元素。多为歌谣体、二部曲式或三部曲式。</p>
+                    <p>这个名字是20世纪20年代在美国出现的，它的源流很广。那时歌曲的内容，除了表现劳动生活之外，厌恶孤寂的流浪生活，向往温暖、安宁的家园，歌唱甜蜜的爱情以及失恋的痛苦等都有。</p>
+                    <p>代表歌手：Jimmie Rodgers，Vernon Dalhart,Sara Carter,Maybelle Carter</p>
+                </div>
+            </div>
+            <!--<div class="musicType jazz"></div>-->
+            <!--<div class="musicType jazz"></div>-->
+            <!--<div class="musicType jazz"></div>-->
+        </div>
+    </div>
+
+</div>
+<%include includes/footer.ejs%>
+
+<script src="javascripts/lib/jquery-2.1.1.js"></script>
+<!--<script src="javascripts/js/artists.js"></script>-->
+</body>
+</html>
