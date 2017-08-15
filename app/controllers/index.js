@@ -21,9 +21,11 @@ exports.index = function(req,res){
                 console.log(err);
             }
             MusicStory.find({})
+                .sort({stars:-1})
                 .limit(3)
                 .exec(function(err,musicStories){
                     //console.log(musicStories.length);
+
                     res.render('index',{
                         musics:musics,musicStories:musicStories
                     })

@@ -7,24 +7,75 @@
 var size = 64;
 //var list = $('#list li');
 var table = $('.songlist table')
+var mv = null;
+window.onload = function() {
+    //获得要显示时间的部分
+    var timeBar = $('.timerShaftMove');
+    var timeBarBack = $('.timerShaft');
+    var timeFrame = $('.time');
 
-var mv = new MusicVisulizer({
-    size:size,
-    visualizer:draw
+    //歌词显示部分
+    var lyrFrame = $('.lyric ul')
 
-})
+    //专辑部分
+    var albumId = $('.albumId')[0].value;
 
-table[0].onclick=function(e){
+    //歌单部分
+    var musicWrapper = $('.tableWrapper table')
+    var musicList = musicWrapper.children().children();
+
+    var listFrame = musicWrapper.children();
+    //console.log(listFrame);
+
+    var playList = [];
+    for (var i = 1; i < musicList.length; i++) {
+        var song = musicList[i].childNodes[1].innerText;
+        var artist = musicList[i].childNodes[0].innerText;
+        var musictime = musicList[i].childNodes[2].childNodes[0].innerText;
+
+        //获得要播放的歌曲
+        var mp3 = musictime + ' - ' + artist + ' - ' + song + '.mp3';
+        var mediaURL = '/media/album' + albumId + '/' + mp3;
+        //歌词部分的地址
+        var lyrUrl = '/lyrics/' + song + '.txt';
+        var playinfo = {
+            mediaURL: mediaURL,
+            lyrUrl: lyrUrl
+        }
+        playList.push(playinfo)
+    }
+    //console.log(playList)
+
+    var options = {
+        timeBarBack: timeBarBack,
+        timeBar: timeBar,
+        timeFrame: timeFrame,
+        lyrFrame: lyrFrame,
+        playList: playList,
+        listFrame:listFrame
+    }
+    mv = new MusicVisulizer({
+        size: size,
+        visualizer: draw,
+        options: options
+    })
+
+
+}
+
+
+
+table[0].onclick = function (e) {
     var target = e.target;
-    if(target.nodeName.toLocaleLowerCase()=='span'){
+    if (target.nodeName.toLocaleLowerCase() == 'span') {
 
         //样式部分
         var playNode = $('.playContro');
-        for(var i=0;i<playNode.length;i++){
+        for (var i = 0; i < playNode.length; i++) {
             playNode[i].classList.remove('play');
             playNode[i].classList.add('stop');
         }
-        if(target.classList.contains('stop')){
+        if (target.classList.contains('stop')) {
             target.classList.remove('stop');
             target.classList.add('play')
         }
@@ -37,65 +88,66 @@ table[0].onclick=function(e){
         var time = target.parentNode.parentNode.childNodes[2].childNodes[0].innerText;
 
         //获得要播放的歌曲
-        var mp3 = time+' - '+artist+' - '+song+'.mp3';
-        var mediaURL = '/media/album'+albumId+'/'+mp3;
+        var mp3 = time + ' - ' + artist + ' - ' + song + '.mp3';
+        var mediaURL = '/media/album' + albumId + '/' + mp3;
 
-        //获得要显示时间的部分
-        var timeBar = $('.timerShaftMove');
-        var timeBarBack = $('.timerShaft');
-        var timeFrame = $('.time');
-        //console.log(song);
+        ////获得要显示时间的部分
+        //var timeBar = $('.timerShaftMove');
+        //var timeBarBack = $('.timerShaft');
+        //var timeFrame = $('.time');
+        ////console.log(song);
 
-        var lyrUrl = '/lyrics/'+song+'.txt';
+        var lyrUrl = '/lyrics/' + song + '.txt';
         var lyrFrame = $('.lyric ul')
         //播放歌曲
         //console.log(mv.getCurrentTime());
-        mv.play(mediaURL,timeBarBack,timeBar,timeFrame,lyrUrl,lyrFrame);
-        //$('.lyric ul').css({
-        //    top:'0px'
-        //})
+        //mv.play(mediaURL,timeBarBack,timeBar,timeFrame,lyrUrl,lyrFrame);
+        mv.play(mediaURL, lyrUrl)
+
 
     }
 }
-
 
 
 //canvas部分
 var box = $('.visual')[0];
-var height,width;
+var height, width;
 var canvas = document.createElement('canvas');
 var ctx = canvas.getContext('2d');
 box.appendChild(canvas);
 
-var Dots=[];
-function random(m,n){
-    return Math.round(Math.random()*(n-m)+m);
+var Dots = [];
+
+function random(m, n) {
+    return Math.round(Math.random() * (n - m) + m);
 }
-function getDots(){
+
+function getDots() {
     Dots = [];
-    for(var i=0;i<size;i++){
-        var x = random(0,width);
-        var y = random(0,height);
-        var color = "rgba("+random(0,255)+","+random(0,255)+","+random(0,255)+",.4"+")";
+    for (var i = 0; i < size; i++) {
+        var x = random(0, width);
+        var y = random(0, height);
+        var color = "rgba(" + random(0, 255) + "," + random(0, 255) + "," + random(0, 255) + ",.4" + ")";
         Dots.push({
-            x:x,
-            y:y,
-            dx:random(0,2),
-            color:color
+            x: x,
+            y: y,
+            dx: random(0, 2),
+            color: color
         })
     }
 }
-function resize(){
+
+function resize() {
 
     height = box.clientHeight;
     width = box.clientWidth;
     //console.log(height,width);
     canvas.height = height;
     canvas.width = width;
-    var line = ctx.createLinearGradient(0,0,0,height);
-    line.addColorStop(0,'lightpink');
-    line.addColorStop(0.5,'pink');
-    line.addColorStop(1,'red');
+    var line = ctx.createLinearGradient(0, 0, 0, height);
+    line.addColorStop(0, 'lightpink');
+    line.addColorStop(0.5, 'pink');
+    line.addColorStop(1, 'red');
     ctx.fillStyle = line;
     getDots();
 }
@@ -105,14 +157,13 @@ resize();
 window.onresize = resize;
 
 
-
 //条形图
-function draw(arr){
-    ctx.clearRect(0,0,width,height);
-    var w = width/size;
-    for(var i=0;i<size;i++){
-        var h = arr[i]/256 *height;
-        ctx.fillRect(w*i,height-h,w*0.6,h);
+function draw(arr) {
+    ctx.clearRect(0, 0, width, height);
+    var w = width / size;
+    for (var i = 0; i < size; i++) {
+        var h = arr[i] / 256 * height;
+        ctx.fillRect(w * i, height - h, w * 0.6, h);
     }
 }
 
@@ -140,8 +191,6 @@ function draw(arr){
 //}
 
 
-
-
 //音量调节
 //$('.volume').click(function(){
 //    $('.volumeRange').toggleClass('hide');
@@ -156,24 +205,26 @@ function draw(arr){
 
 
 //更多操作部分
-$('.more').click(function(){
+$('.more').click(function () {
     $('.moreHide').toggleClass('hide');
 })
-$('.loop').click(function(){
+$('.loop').click(function () {
     $(this).addClass('select');
 })
 //歌词显示---海报显示
-$('.words').click(function(){
+$('.words').click(function () {
     var $lyrPic = $('.lyrPic');
-    if($(this).hasClass('select')){
+    if ($(this).hasClass('select')) {
         $(this).removeClass('select');
         $lyrPic.hide();
-    }else{
+    } else {
         $(this).addClass('select');
         $lyrPic.show();
     }
 })
 //上一首
-$('.previous').click(function(){
+$('.previous').click(function () {
 
 })
+
+

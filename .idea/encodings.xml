@@ -3,6 +3,7 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/app/controllers/user.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/public/javascripts/js/MusicVisualizer.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/public/javascripts/js/commentStar.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/public/javascripts/js/musicPlayer.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/public/javascripts/js/musicStory.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/public/javascripts/js/signup.js" charset="UTF-8" />

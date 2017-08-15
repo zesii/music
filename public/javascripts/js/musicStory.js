@@ -10,17 +10,22 @@ $('.storySubmit').click(function(){
         $('.commentTips').hide();
     }
     var $user = $('.from').val();
-    console.log($user);
+    var albumId = $('.storyForm .albumId').val();
+    //console.log($user);
     $.ajax({
         url:'/musicStory/new',
         type:'post',
         data:{
             content:$comment,
             user:$user,
+            albumId:albumId
         },
         success:function(response){
 
-            if(response=='save'){
+            if(response.indexOf('save')>=-1){
+
+                var musicStoryId = response.split('save')[1].trim();
+                console.log(musicStoryId);
                 alert("评论成功");
 
                 var userName =  $('.userName').text().split('欢迎您,')[1];
@@ -33,9 +38,22 @@ $('.storySubmit').click(function(){
                 var divStory = document.createElement('div');
                 divStory.classList.add('storyContent');
                 divStory.innerText=userName+':'+$comment;
+                var starWrapper = document.createElement('span');
+                var storyStars = document.createElement('span');
+                var starNum = document.createElement('span');
+                starWrapper.classList.add('starWrapper');
+                storyStars.classList.add('storyStars');
+                storyStars.classList.add('disagree');
+                storyStars.addEventListener('click',function(e){starComment(e,musicStoryId);},false);
+                starNum.classList.add('starNum');
+                starNum.innerText = '0';
+                starWrapper.appendChild(storyStars);
+                starWrapper.appendChild(starNum);
+
                 divWrapper.appendChild(divUserPic);
                 divUserPic.appendChild(userImg);
                 divWrapper.appendChild(divStory);
+                divWrapper.appendChild(starWrapper);
                 $('.story').append(divWrapper);
                 $('.content').val("");
                 $('.storySubmit').attr('disabled',false)
@@ -55,13 +73,14 @@ $('.smellSubmit').click(function(){
         $('.smellTips').hide();
     }
     var user = $('.from').val();
-
+    var albumId = $('.smell .albumId').val();
     $.ajax({
         url:'/musicSmell/new',
         type:'post',
         data:{
             smell:smell,
             user:user,
+            albumId:albumId
         },
         success:function(response){
 

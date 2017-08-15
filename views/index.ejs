@@ -42,7 +42,7 @@
                 <!--<li><div class="userPic"><img src="images/user/user2.jpg"></div><p class="story_title">我的故事</p></li>-->
                 <!--<li><div class="userPic"><img src="images/user/user4.jpg"></div><p class="story_title">我的故事</p></li>-->
                 <% musicStories.forEach(function(story){%>
-                    <li><div class="userPic"><img src="images/user/user1.jpg"></div><p class="story_title"><%= story.content%></p></li>
+                    <li><div class="userPic"><img src="images/user/user1.jpg"></div><a href="/musicPlay?id=<%= story.albumId%>" ><p class="story_title"><%= story.content%></p></a></li>
                 <% }) %>
             </ul>
             <!--<button>查看更多</button>-->

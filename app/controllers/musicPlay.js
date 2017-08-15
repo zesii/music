@@ -13,12 +13,12 @@ exports.showlist = function(req,res){
     var media = path.join(__dirname,"../../public/media/album"+musicId);
     var _musicStories;
     var _smells;
+    var albumId = musicId;
 
     fs.readdir(media,function(err,names){
         if(err){
             console.log(err);
         }else{
-            //console.log(names);
             var musics=[];
             for(var i =0;i<names.length;i++){
                 var songTime = names[i].split('-')[0].trim();
@@ -33,29 +33,26 @@ exports.showlist = function(req,res){
 
             }
             MusicStory
-                .find({})
+                .find({albumId:albumId})
+                .sort({stars:-1})
                 .limit(5)
                 .populate('from','name')
                 .exec(function(err,musicStories){
                     if(err){
                         console.log(err);
                     }
-                    //console.log(musicStories)
                     _musicStories = musicStories;
                     Smell
-                        .find({})
+                        .find({albumId:albumId})
                         .exec(function(err,smells){
                             _smells = smells;
                             res.render('musicPlay', { title: 'Music Player',musics:musics,id:musicId,musicStories:_musicStories,smells:_smells});
 
                         })
-                    //res.render('musicPlay', { title: 'Music Player',musics:musics,id:musicId,musicStories:_musicStories});
 
                 })
-            //res.render('musicPlay', { title: 'Music Player',musics:musics,id:musicId,musicStories:_musicStories});
         }
     })
-    //res.render('musicPlay', { title: 'Music Player',music:[]});
 }
 exports.save = function(req,res){
     console.log(req.body.music);

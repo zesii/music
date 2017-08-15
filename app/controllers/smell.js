@@ -9,7 +9,9 @@ exports.save = function(req,res,next){
     //var musicStoryId = musicStoryObj._id;
     var smell = req.body.smell;
     var user = req.body.user;
+    var albumId = req.body.albumId;
     var smellObj = {
+        albumId:albumId,
         smell:smell,
         from:user
     }

@@ -8,6 +8,7 @@ var i = 0;
 var MusicStorySchema = new Schema({
     //title:String,
     content:String,
+    albumId:Number,
     from:{type:ObjectId,ref:'User'},
     meta:{
         createAt:{
@@ -18,7 +19,8 @@ var MusicStorySchema = new Schema({
             type:Date,
             default:Date.now()
         }
-    }
+    },
+    stars:{type:Number,default:0}
 })
 MusicStorySchema.pre('save',function(next){
     if(this.isNew){

@@ -1,0 +1,9 @@
+如何安装一个express
+（1）在某个文件目录下 npm install -g express-generator,安装全局的express。（这一步如果在该目录下已经执行过，是否还要进行？）
+（2）express -e XXX  -e代表的是用的ejs模板，XXX是项目的名称。
+（3）cd XXX  进入这个项目
+（4）npm install 进行安装
+（5）npm install -g supervisor 可以安装一个supervisor来监测代码的变化
+（6）supervisor bin/www
+访问3000端口，可以看到express的欢迎页面
+注意：（4），（5），（6）都是在具体的项目XXX的目录下完成的。

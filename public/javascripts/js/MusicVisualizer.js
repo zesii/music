@@ -2,6 +2,7 @@
  * Created by zes on 2017/7/19.
  */
 function MusicVisulizer(obj){
+    this.options = obj.options;
     this.source = null;//当前正在播放的bufferSource节点
 
     this.count = 0;//点击次数
@@ -25,6 +26,9 @@ function MusicVisulizer(obj){
 
     this.lyr = null;
     this.offset = 0;
+
+
+    this.onplayIndex = -1;
 }
 var line = 0;
 MusicVisulizer.ac = new (window.AudioContext || window.webkitAudioContext)();
@@ -57,9 +61,54 @@ MusicVisulizer.prototype.decode = function(arraybuffer,cb){
         console.log(err);
     });
 }
+MusicVisulizer.prototype.getMusicIndex = function(musicUrl){
+    console.log(musicUrl);
+    var playList = this.options.playList;
+    var index=-1;
+    var listLength = playList.length;
+    for(var i=0;i<listLength;i++){
+        if(musicUrl===playList[i].mediaURL){
+            index = i;
+        }
+    }
+    return index;
+}
+MusicVisulizer.prototype.playNext = function(index){
+    var playList = this.options.playList;
+    var listLength = playList.length;
 
-MusicVisulizer.prototype.play = function(url,timeBarBack,timeBar,timeFrame,lyrUrl,lyricFrame){
-    var timer
+    var nextIndex = index+1;
+    if(nextIndex<listLength){
+        var nextMediaUrl = playList[nextIndex].mediaURL;
+        var nextLyrUrl = playList[nextIndex].lyrUrl;
+        this.play(nextMediaUrl,nextLyrUrl);
+
+    }else{
+
+    }
+
+    //播放图标更新
+    var listFrame = this.options.listFrame;
+    var list = listFrame.children();
+    //console.log(list[index])
+    var playClass = list[index+1].childNodes[2].childNodes[1].classList;
+    console.log(playClass);
+    playClass.remove('play')
+    playClass.add('stop')
+    var nextPlay = list[index+2].childNodes[2].childNodes[1].classList;
+    nextPlay.remove('stop')
+    nextPlay.add('play')
+
+
+}
+
+MusicVisulizer.prototype.play = function(url,lyrUrl){
+    var timeBarBack = this.options.timeBarBack;
+    var timeBar = this.options.timeBar;
+    var timeFrame = this.options.timeFrame;
+    var lyricFrame = this.options.lyrFrame;
+
+    var timer;
     var n = ++this.count;
     var self = this;
     this.source && this.stop();
@@ -99,6 +148,9 @@ MusicVisulizer.prototype.play = function(url,timeBarBack,timeBar,timeFrame,lyrUr
 
                 self.source.onended = function(){
                     clearInterval(timer);
+                    var playIndex = self.getMusicIndex(url);
+                    self.playNext(playIndex)
+                    //mv.play(nextUrl,nextLyrUrl)
                 }//设置结束事件
 
 
@@ -208,9 +260,9 @@ MusicVisulizer.prototype.lyricMove=function(lyr,lyricFrame,timeoffset){
     }
 
     if(currentTime>=lyrArr[len-1].time){
-        console.log("in")
-        console.log(lyrNode[len-1])
-        console.log(lyrNode[len-2])
+        //console.log("in")
+        //console.log(lyrNode[len-1])
+        //console.log(lyrNode[len-2])
         lyrNode[len-1].classList.add('on');
         lyrNode[len-2].classList.remove('on');
     }

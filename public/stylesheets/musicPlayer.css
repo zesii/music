@@ -542,6 +542,7 @@
     padding: 0px 20px;
     border-top: 1px dotted transparent;
     border-bottom: 1px dotted silver;
+    position: relative;
 }
 .userPic{
     /*border: .5px solid silver;*/
@@ -563,8 +564,9 @@
     margin-top: 5px;
     width: 730px;
     font-size: 14px;
-    padding: 10px 10px;
+    padding: 0px 20px;
     position: relative;
+    overflow: hidden;
 }
 
 .storyForm{
@@ -576,6 +578,8 @@
     width: 650px;
     height: 80px;
     font-size: 16px;
+    margin-top: 20px;
+    margin-left: 20px;
 }
 
 .storySubmit{
@@ -583,7 +587,7 @@
     /* background-color: #00B7FF; */
     height: 30px;
     border: none;
-    margin-left: 570px;
+    margin-left: 650px;
     margin-top: 10px;
 }
 .commentTips{
@@ -598,8 +602,10 @@
     color: gray;
     position: absolute;
     text-decoration: none;
-    top: 100px;
-    left: 590px;
+    top: 120px;
+    left: 690px;
+    font-size: 12px;
+
 }
 .commentAfterLogin:hover{
     color: black;
@@ -623,4 +629,31 @@ p.storyMore{
 }
 .storyMore a:hover{
     color: black;
+}
+.starWrapper{
+    left: 810px;
+    top: 70px;
+    position: absolute;
+
+}
+.storyStars{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+
+
+}
+.disagree{
+    background: url("/images/icon/dis-agree.jpg");
+}
+.agree{
+    background: url("/images/icon/agree.jpg");
+}
+.storyStars:hover{
+    background: url("/images/icon/agree.jpg");
+}
+.starNum{
+    font-size: 12px;
+    width: 30px;
+    overflow: hidden;
 }

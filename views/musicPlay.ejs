@@ -85,6 +85,7 @@
         <p>闻见音乐</p>
         <div class="smell">
             <form>
+                <input type="hidden" class="albumId" value="<%= id%>" >
                 <input type="text" class="smellInput">
                 <span class="smellTips">填写味道后评论</span>
                 <% if (user) { %>
@@ -111,12 +112,13 @@
             <div class="userPic">
                 <img src="images/user/userDefault.jpg">
             </div>
-            <div class="storyContent">
+            <div class="">
                 <form class="storyForm" >
+                    <input type="hidden" class="albumId" value="<%= id%>" >
                     <% if(user) { %>
                         <input type="hidden"  class="from" value="<%= user._id%>"  >
                     <% } %>
-                    <textarea  class="content" placeholder="说说你的音乐故事"></textarea>
+                    <textarea  class="content" placeholder="说说你的音乐故事(不超过240个字)"></textarea>
                     <span class="commentTips">请输入评论内容后提交</span>
                     <% if (user) { %>
                         <input class="storySubmit" type="button" value="提交">
@@ -130,12 +132,14 @@
         <!--用户评论部分-->
         <% musicStories.forEach(function(musicStory){%>
             <div class="userStory">
+                <input type="hidden" class="musicStoryId" value="<%= musicStory._id%>">
                 <div class="userPic">
                 <img src="images/user/user2.jpg">
                 </div>
                 <div class="storyContent">
                 <%= musicStory.from.name%>:<%= musicStory.content%>
                 </div>
+                <span class="starWrapper"><span class="storyStars disagree"></span><span class="starNum"><%= musicStory.stars%></span></span>
             </div>
         <%})%>
         <p class="storyMore"><a>查看更多故事</a></p>
@@ -147,6 +151,7 @@
 <script type="text/javascript" src="javascripts/js/tagCloud.js"></script>
 <script type="text/javascript" src="javascripts/js/musicPlayer.js"></script>
 <script type="text/javascript" src="javascripts/js/musicStory.js"></script>
+<script type="text/javascript" src="javascripts/js/commentStar.js"></script>
 
 
 </body>

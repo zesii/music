@@ -10,6 +10,7 @@ var ObjectId = Schema.Types.ObjectId;
 var i = 0;
 var SmellSchema = new Schema({
     smell:String,
+    albumId:Number,
     from:{type:ObjectId,ref:'User'},
     meta:{
         createAt:{

@@ -39,6 +39,7 @@ module.exports = function(app){
     app.get('/musicPlay',MusicPlay.showlist);
     app.post('/musicStory/new',User.signinRequired,MusicStory.save);
     app.post('/musicSmell/new',User.signinRequired,Smell.save)
+    app.post('/musicStory/love',MusicStory.star);
 
     //处理用户相关内容
     app.get('/signin',User.showSignin);
